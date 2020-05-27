@@ -49,6 +49,25 @@ declare namespace Symphony {
     streamType: string;
   }
 
+  export interface BotUser {
+    id: number;
+    firstName: string | null;
+    lastName: string | null;
+    displayName: string;
+    title: string | null;
+    company: string | null;
+    username: string;
+    location: string | null;
+    accountType: string;
+    avatars: object[];
+    workPhoneNumber: any;
+    mobilePhoneNumber: any;
+    jobFunction: any;
+    department: any;
+    division: any;
+    roles: any[]
+  }
+
   export const MESSAGEML_FORMAT: 'messageML'
 
   export const PRESENTATIONML_FORMAT: 'presentationML'
@@ -90,7 +109,7 @@ declare namespace Symphony {
 
   export function getAttachment(streamId: string, attachmentId: any, messageId: any): any;
 
-  export function getBotUser(): void;
+  export function getBotUser(): BotUser;
 
   export function getCashtags(message: any): any;
 
@@ -177,9 +196,9 @@ declare namespace Symphony {
 
   export function sendConnectionRequest(userId: number, sessionToken: any): void;
 
-  export function sendMessage(conversationId: any, message: any, data: any, format: 'messageML' | 'presentationML', sessionToken?: any): SendMessageResponse | ErrorResponse;
+  export function sendMessage(conversationId: string, message: string, data: any | undefined, format: 'messageML' | 'presentationML', sessionToken?: any): SendMessageResponse | ErrorResponse;
 
-  export function sendMessageWithAttachment(conversationId: any, message: any, data: any, fileName: any, fileType: any, fileContent: any, format: any): any;
+  export function sendMessageWithAttachment(conversationId: string, message: string, data: any | undefined, fileName: any, fileType: any, fileContent: any, format: 'messageML' | 'presentationML'): any;
 
   /**
    * Set the debug mode of the bot to 'on' or 'off'
@@ -201,11 +220,11 @@ declare namespace Symphony {
 
   export function unsubscribeSignal(id: any, userIds: any, sessionToken: any): void;
 
-  export function updateRoom(streamId: string, room: any, description: any, keywords: any, membersCanInvite: any, discoverable: any, anyoneCanJoin: any, readOnly: any, copyProtected: any, crossPod: any, viewHistory: any): any;
+  export function updateRoom(streamId: string, room: any, description: any, keywords: any, membersCanInvite: boolean, discoverable: boolean, anyoneCanJoin: boolean, readOnly: boolean, copyProtected: boolean, crossPod: boolean, viewHistory: any): any;
 
   export function updateSignal(id: any, name: any, query: any, visibleOnProfile: any, companyWide: any, sessionToken: any): any;
 
-  export function verifyJwt(jwt: any): any;
+  export function verifyJwt(jwt: string): any;
 
 }
 

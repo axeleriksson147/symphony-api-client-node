@@ -22,7 +22,7 @@
     "Mikhail Tarasov <mikhail.tarasov@symphony.com>"
   ],
   "main": "index.js",
-  "types": "./lib/main.d.ts",
+  "types": "main.d.ts",
   "directories": {
     "lib": "lib",
     "test": "tests"
